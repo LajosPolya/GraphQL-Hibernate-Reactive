@@ -25,8 +25,19 @@ Execute `./gradlew :bootRun` boot the server.
 
 To call the API import `src/main/resources/API.postman_collection.json` into Postman.
 Execute the `withSession` request.
-This request fetches all Parents and each their Children using GraphQL.
+This request fetches all Parents and each their Children using GraphQL but fails to fetch the seconds Parent's Child.
+
+
+Execute the `withTransaction` request.
+This query fetches the Children entities in a transaction. This query doesn't throw an exception.
+
+This a simple example to reproduce the exception but using `withTransaction` is not a solution because
+I have a more complex data model in a private repo which throws other exceptions down the line if I try to fetch
+more deeply nested entities.
 
 #### Expected Behaviour
+All Parents and their Children are fetched successfully.
+
+### Actual Behavior
 The first Parent and its Child is fetched successfully.
 The second Parent is also fetched successfully but an exception is throw while the API tries to fetch the second Parent's child.
