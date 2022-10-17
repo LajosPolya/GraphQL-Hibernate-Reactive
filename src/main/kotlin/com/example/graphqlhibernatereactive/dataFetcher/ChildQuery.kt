@@ -19,8 +19,14 @@ class ChildQuery @Autowired constructor(
     @DgsData(parentType = DgsConstants.PARENT.TYPE_NAME)
     fun children(dfe: DgsDataFetchingEnvironment): Mono<List<Child>> {
         val member = dfe.getSource<Parent>()
-        return childRepository.findForParent(member.id!!).map {
-            it.map { child -> Child(child.id, child.name) }
+        return if(dfe.getDgsContext().requestData?.headers?.get("withSession")?.get(0) == "true") {
+            childRepository.findForParent(member.id!!).map {
+                it.map { child -> Child(child.id, child.name) }
+            }
+        } else {
+            childRepository.findForParentTransaction(member.id!!).map {
+                it.map { child -> Child(child.id, child.name) }
+            }
         }
     }
 }

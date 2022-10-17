@@ -26,4 +26,20 @@ class ChildRepository @Autowired constructor(
             session.createQuery(criteriaQuery).resultList
         }.toMono()
     }
+
+    fun findForParentTransaction(id: Int): Mono<List<Child>> {
+        return sessionFactory.withTransaction { session ->
+            val criteriaBuilder = sessionFactory.criteriaBuilder
+            val criteriaQuery = criteriaBuilder.createQuery(Child::class.java)
+            val root = criteriaQuery.from(Child::class.java)
+
+            val predicates = mutableListOf(
+                criteriaBuilder.equal(root.get<Int>("parent"), id)
+            )
+
+            criteriaQuery.where(*predicates.toTypedArray())
+
+            session.createQuery(criteriaQuery).resultList
+        }.toMono()
+    }
 }
