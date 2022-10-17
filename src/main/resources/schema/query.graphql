@@ -1,0 +1,14 @@
+"""
+Action for retrieving information from the API
+"""
+type Query {
+    """
+    Request a Parent `withSession`
+    """
+    withSession: [Parent]
+
+    """
+    Request a Parent `withTransaction`
+    """
+    withTransaction: [Parent]
+}

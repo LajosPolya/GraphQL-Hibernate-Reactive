@@ -1,0 +1,16 @@
+"""
+Entity representing a Parent
+"""
+type Parent {
+    """
+    Primary identifier for the Parent entity.
+    """
+    id: Int
+
+    name: String
+
+    """
+    Parent's children
+    """
+    children: [Child!]
+}

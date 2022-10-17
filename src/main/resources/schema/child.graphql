@@ -1,0 +1,14 @@
+"""
+Child account entity.
+"""
+type Child {
+    """
+    Primary identifier for the Child entity.
+    """
+    id: Int
+
+    """
+    Name of Child
+    """
+    name: String!
+}
