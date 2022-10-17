@@ -25,7 +25,7 @@ Execute `./gradlew :bootRun` boot the server.
 
 To call the API import `src/main/resources/API.postman_collection.json` into Postman.
 Execute the `withSession` request.
-This request fetches all Parents and each their Children using GraphQL but fails to fetch the seconds Parent's Child.
+This request fetches all Parents and each their Children using GraphQL but fails to fetch the second Parent's Child.
 
 
 Execute the `withTransaction` request.
