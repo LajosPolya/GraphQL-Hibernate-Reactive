@@ -38,6 +38,6 @@ more deeply nested entities.
 #### Expected Behaviour
 All Parents and their Children are fetched successfully.
 
-### Actual Behavior
+#### Actual Behavior
 The first Parent and its Child is fetched successfully.
 The second Parent is also fetched successfully but an exception is throw while the API tries to fetch the second Parent's Child.
