@@ -15,17 +15,8 @@ class ParentQuery @Autowired constructor(
 ) {
 
     @DgsQuery
-    fun withSession(): Mono<List<Parent>> {
+    fun parents(): Mono<List<Parent>> {
         return parentRepository.withSession().map {
-            it.map { parent -> Parent(parent.id, parent.name) }
-        }.switchIfEmpty {
-            throw DgsEntityNotFoundException("ActiveState not found.")
-        }
-    }
-
-    @DgsQuery
-    fun withTransaction(): Mono<List<Parent>> {
-        return parentRepository.withTransaction().map {
             it.map { parent -> Parent(parent.id, parent.name) }
         }.switchIfEmpty {
             throw DgsEntityNotFoundException("ActiveState not found.")

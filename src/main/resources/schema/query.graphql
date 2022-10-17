@@ -3,12 +3,7 @@ Action for retrieving information from the API
 """
 type Query {
     """
-    Request a Parent `withSession`
+    Request a Parent
     """
-    withSession: [Parent]
-
-    """
-    Request a Parent `withTransaction`
-    """
-    withTransaction: [Parent]
+    parents: [Parent]
 }

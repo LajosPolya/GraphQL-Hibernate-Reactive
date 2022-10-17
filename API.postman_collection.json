@@ -9,11 +9,17 @@
 			"name": "withSession",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "withSession",
+						"value": "true",
+						"type": "default"
+					}
+				],
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query {\r\n    withSession {\r\n        id\r\n        name\r\n        children {\r\n            id\r\n            name\r\n        }\r\n    }\r\n}",
+						"query": "query {\r\n    parents {\r\n        id\r\n        name\r\n        children {\r\n            id\r\n            name\r\n        }\r\n    }\r\n}",
 						"variables": ""
 					}
 				},
@@ -39,7 +45,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query {\r\n    withTransaction {\r\n        id\r\n        name\r\n        children {\r\n            id\r\n            name\r\n        }\r\n    }\r\n}",
+						"query": "query {\r\n    parents {\r\n        id\r\n        name\r\n        children {\r\n            id\r\n            name\r\n        }\r\n    }\r\n}",
 						"variables": ""
 					}
 				},
