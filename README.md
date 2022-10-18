@@ -16,8 +16,20 @@ Running the commands in `src/main/resources/dbCreation.sh` will pull a Docker Im
 
 ### Creating the DB Schema
 Use the SQL statements found in `src/main/resources/schemaCreation.sql` to create the schema and the tables.
+
+
 This script also contains DML queries to create two Parent entities, each having a Child.
+
+Alternatively, the API can be used to call the `createData` mutation to generate data in the database. 
+For more information on how to run the server checkout the Server and API section.
+
+
 Note: I can only reproduce the exception when there are at least two Parents and each Parent has at least one Child.
+
+### Tests
+Tests which reproduce the issue can be found at `src/test/kotlin/com/example/graphqlhibernatereactive/spec/ParentChildSpec`.
+In order to run successfully the tests need to connect to a database with a valid schema.
+
 
 ### Server and API
 If the instructions above were used then the server should be able to boot without any errors.
