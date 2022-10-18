@@ -1,5 +1,6 @@
 package com.example.graphqlhibernatereactive.repository
 
+import com.example.graphqlhibernatereactive.entity.Child
 import com.example.graphqlhibernatereactive.entity.Parent
 import org.hibernate.reactive.mutiny.Mutiny.SessionFactory
 import org.springframework.beans.factory.annotation.Autowired
@@ -11,18 +12,16 @@ class ParentRepository @Autowired constructor(
     private val sessionFactory: SessionFactory
 ) : BaseRepository() {
 
-    fun withSession(): Mono<List<Parent>> {
-        return sessionFactory.withSession { session ->
-            val criteriaBuilder = sessionFactory.criteriaBuilder
-            val criteriaQuery = criteriaBuilder.createQuery(Parent::class.java)
-            criteriaQuery.from(Parent::class.java)
+    fun createParent(): Mono<Parent> {
 
-            session.createQuery(criteriaQuery).resultList
+        return sessionFactory.withTransaction { session ->
+            val parent1 = Parent(null, "Parent1")
+            session.persist(parent1).chain(session::flush).replaceWith(parent1)
         }.toMono()
     }
 
-    fun withTransaction(): Mono<List<Parent>> {
-        return sessionFactory.withTransaction { session ->
+    fun withSession(): Mono<List<Parent>> {
+        return sessionFactory.withSession { session ->
             val criteriaBuilder = sessionFactory.criteriaBuilder
             val criteriaQuery = criteriaBuilder.createQuery(Parent::class.java)
             criteriaQuery.from(Parent::class.java)

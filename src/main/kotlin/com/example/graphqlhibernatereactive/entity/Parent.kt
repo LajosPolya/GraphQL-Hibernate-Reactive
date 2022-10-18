@@ -12,5 +12,5 @@ class Parent(
     @GeneratedValue(strategy = IDENTITY)
     var id: Int? = null,
     var name: String = "",
-    @OneToMany(mappedBy = "parent") val advertisers: List<Child> = mutableListOf()
+    @OneToMany(mappedBy = "parent") val children: List<Child> = mutableListOf()
 )
