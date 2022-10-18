@@ -1,15 +1,11 @@
 package com.example.graphqlhibernatereactive.spec
 
-import com.example.graphqlhibernatereactive.entity.Parent
 import com.netflix.graphql.dgs.client.MonoGraphQLClient
-import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertThrows
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.web.server.LocalServerPort
 import org.springframework.web.reactive.function.client.WebClient
-import java.util.concurrent.CompletionException
 
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)

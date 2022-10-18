@@ -1,6 +1,5 @@
 package com.example.graphqlhibernatereactive.repository
 
-import com.example.graphqlhibernatereactive.entity.Child
 import com.example.graphqlhibernatereactive.entity.Parent
 import org.hibernate.reactive.mutiny.Mutiny.SessionFactory
 import org.springframework.beans.factory.annotation.Autowired
